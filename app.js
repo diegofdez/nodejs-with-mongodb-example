@@ -8,7 +8,11 @@ var bodyParser = require('body-parser');
 // Mongo DB connector
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('127.13.64.130:27017/nodetest1');
+/*var db = monk(process.env.OPENSHIFT_MONGODB_DB_USERNAME 
+	+ ':' + process.env.OPENSHIFT_MONGODB_DB_PASSWORD 
+	+ '@' + process.env.OPENSHIFT_MONGODB_DB_HOST 
+	+ ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/nodetest1');*/
+var db = monk(process.env.OPENSHIFT_MONGODB_DB_URL + '/nodetest1');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
