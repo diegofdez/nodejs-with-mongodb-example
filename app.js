@@ -10,8 +10,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk(process.env.OPENSHIFT_MONGODB_DB_URL + '/nodetest1');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes = require('./routes/web/index');
 
 var app = express();
 
@@ -33,7 +32,6 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/users', users);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
